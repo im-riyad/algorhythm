@@ -3,18 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Algorhythm</title>
+    <title>Algorhythm | Student Study Planner</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
-    <h1>Welcome to Algorhythm</h1>
+    <div class="app">
 
-    <script src="js/storage.js"></script>
-    <script src="js/ui.js"></script>
-    <script src="js/app.js"></script>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <h2>Algorhythm</h2>
+        </div>
+
+        <nav class="menu">
+
+            <a href="#" class="active">Dashboard</a>
+
+            <a href="#">Tasks</a>
+
+            <a href="#">Subjects</a>
+
+            <a href="#">Calendar</a>
+
+            <a href="#">Settings</a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Area -->
+    <div class="main-content">
+
+        <!-- Top Bar -->
+        <header class="topbar">
+
+            <h1>Dashboard</h1>
+
+            <div class="profile">
+
+                <span>👤 Riyad</span>
+
+            </div>
+
+        </header>
+
+        <!-- Workspace -->
+        <main class="workspace">
+
+            <h2>Welcome to Algorhythm 👋</h2>
+
+            <p>Your productivity starts here.</p>
+
+        </main>
+
+    </div>
+
+</div>
+
+<script src="js/storage.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/app.js"></script>
 
 </body>
 </html>
