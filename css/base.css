@@ -1,0 +1,54 @@
+/* ==========================
+   Google Font
+========================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ==========================
+   CSS Reset
+========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==========================
+   Design System
+========================== */
+:root {
+
+    /* Colors */
+    --primary: #4F46E5;
+    --primary-hover: #4338CA;
+
+    --background: #F5F7FB;
+    --surface: #FFFFFF;
+
+    --text-primary: #1E293B;
+    --text-secondary: #64748B;
+
+    --border: #E2E8F0;
+
+    --success: #22C55E;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+
+    /* Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+
+    /* Shadow */
+    --shadow:
+        0 8px 24px rgba(15,23,42,0.08);
+}
+
+/* ==========================
+   Body
+========================== */
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: var(--background);
+    color: var(--text-primary);
+}
