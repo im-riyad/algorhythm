@@ -1,0 +1,155 @@
+/* ===========================
+   Sidebar
+=========================== */
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+
+    padding: 32px 24px;
+}
+
+.sidebar-brand {
+    margin-bottom: 32px;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 12px;
+}
+
+.brand-logo svg {
+    width: 28px;
+    height: 28px;
+    color: var(--primary);
+}
+
+.brand-logo h2 {
+    color: var(--primary);
+    font-size: 1.8rem;
+}
+
+.sidebar-brand p {
+    margin-top: 8px;
+
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    flex: 1;
+
+    margin-top: 24px;
+}
+
+/* ===========================
+   Navigation
+=========================== */
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    text-decoration: none;
+    color: var(--text-secondary);
+
+    padding: 14px 16px;
+
+    border-radius: var(--radius-md);
+
+    transition: all 0.25s ease;
+}
+
+.nav-item svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.25s ease;
+}
+
+.nav-item:hover {
+    background: var(--background);
+    color: var(--primary);
+
+    transform: translateX(4px);
+}
+
+.nav-item:hover svg {
+    transform: scale(1.1);
+}
+
+.nav-item.active {
+    background: var(--primary);
+    color: white;
+
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25);
+}
+
+.nav-item.active svg {
+    color: white;
+    font-weight: 600;
+}
+
+/* ===========================
+   Sidebar User
+=========================== */
+
+.sidebar-user {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    transition: background 0.25s ease;
+    border-radius: var(--radius-md);
+}
+
+.sidebar-user:hover {
+    background: var(--background);
+}
+
+.user-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 46px;
+    height: 46px;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+    color: white;
+}
+
+.user-avatar svg {
+    width: 22px;
+    height: 22px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info strong {
+    font-size: 0.95rem;
+}
+
+.user-info span {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}

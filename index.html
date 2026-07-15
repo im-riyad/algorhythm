@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algorhythm | Student Study Planner</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/components.css">
@@ -15,61 +18,117 @@
 
     <div class="app">
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
+        <!-- Sidebar -->
 
-        <div class="logo">
-            <h2>Algorhythm</h2>
-        </div>
+        <aside class="sidebar">
 
-        <nav class="menu">
+            <div class="sidebar-brand">
 
-            <a href="#" class="active">Dashboard</a>
+                <div class="brand-logo">
 
-            <a href="#">Tasks</a>
+                    <i data-lucide="graduation-cap"></i>
 
-            <a href="#">Subjects</a>
+                    <h2>Algorhythm</h2>
 
-            <a href="#">Calendar</a>
+                </div>
 
-            <a href="#">Settings</a>
-
-        </nav>
-
-    </aside>
-
-    <!-- Main Area -->
-    <div class="main-content">
-
-        <!-- Top Bar -->
-        <header class="topbar">
-
-            <h1>Dashboard</h1>
-
-            <div class="profile">
-
-                <span>👤 Riyad</span>
+                <p>
+                    Find Your Rhythm.<br>
+                    Master Your Studies.
+                </p>
 
             </div>
 
-        </header>
+            <nav class="sidebar-nav">
 
-        <!-- Workspace -->
-        <main class="workspace">
+                <a href="#" class="nav-item active">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
 
-            <h2>Welcome to Algorhythm 👋</h2>
+                <a href="#" class="nav-item">
+                    <i data-lucide="check-square"></i>
+                    <span>Tasks</span>
+                </a>
 
-            <p>Your productivity starts here.</p>
+                <a href="#" class="nav-item">
+                    <i data-lucide="book-open"></i>
+                    <span>Subjects</span>
+                </a>
 
-        </main>
+                <a href="#" class="nav-item">
+                    <i data-lucide="calendar-days"></i>
+                    <span>Calendar</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <i data-lucide="chart-column"></i>
+                    <span>Progress</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <i data-lucide="settings"></i>
+                    <span>Settings</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-user">
+
+                <div class="user-avatar">
+                    <i data-lucide="user"></i>
+                </div>
+
+                <div class="user-info">
+
+                    <strong>Riyad</strong>
+
+                    <span>Software Engineering Student</span>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+        <!-- Main Area -->
+        <div class="main-content">
+
+            <!-- Top Bar -->
+            <header class="topbar">
+
+                <h1>Dashboard</h1>
+
+                <div class="profile">
+
+                    <span>👤 Riyad</span>
+
+                </div>
+
+            </header>
+
+            <!-- Workspace -->
+            <main class="workspace">
+
+                <h2>Welcome to Algorhythm 👋</h2>
+
+                <p>Your productivity starts here.</p>
+
+            </main>
+
+        </div>
 
     </div>
 
-</div>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
 
-<script src="js/storage.js"></script>
-<script src="js/ui.js"></script>
-<script src="js/app.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+    lucide.createIcons();
+    </script>
 
 </body>
 </html>
