@@ -11,15 +11,21 @@
 }
 
 .topbar {
-    height: 72px;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    padding: 0 32px;
+    padding: 24px 32px;
+
+    background: var(--surface);
+
+    border-bottom: 1px solid var(--border);
+}
+
+.page-title p {
+    margin-top: 4px;
+
+    color: var(--text-secondary);
 }
 
 .workspace {
