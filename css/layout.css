@@ -1,13 +1,16 @@
 .app {
     display: grid;
     grid-template-columns: 260px 1fr;
-    min-height: 100vh;
+
+    height: 100vh;
 }
 
 
 .main-content {
     display: flex;
     flex-direction: column;
+
+    overflow: hidden;
 }
 
 .topbar {
@@ -20,6 +23,10 @@
     background: var(--surface);
 
     border-bottom: 1px solid var(--border);
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .page-title p {
