@@ -38,7 +38,8 @@ taskForm.addEventListener("submit", (event) => {
         priority: document.getElementById("task-priority").value,
         date: document.getElementById("task-date").value,
         time: document.getElementById("task-time").value,
-        description: document.getElementById("task-description").value.trim()
+        description: document.getElementById("task-description").value.trim(),
+        completed: false
     };
 
     console.log("New Task:", task);
@@ -46,11 +47,12 @@ taskForm.addEventListener("submit", (event) => {
     tasks.push(task);
 
     saveTasks(tasks);
-    updateDashboardStats();
 
     renderTask(task);
 
     updateDashboardStats();
+
+    renderUpcomingDeadlines();
 
     taskForm.reset();
 
@@ -155,6 +157,96 @@ function updateDashboardStats() {
         totalSubjects;
 }
 
+function renderUpcomingDeadlines() {
+
+    const deadlineList =
+        document.getElementById("deadline-list");
+
+    if (!deadlineList) {
+        return;
+    }
+
+    deadlineList.innerHTML = "";
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const upcomingTasks = tasks
+        .filter(task => {
+
+            if (!task.date || task.completed) {
+                return false;
+            }
+
+            const taskDate = new Date(task.date + "T00:00:00");
+
+            return taskDate >= today;
+        })
+        .sort((a, b) => {
+
+            const dateA =
+                new Date(a.date + "T00:00:00");
+
+            const dateB =
+                new Date(b.date + "T00:00:00");
+
+            return dateA - dateB;
+        })
+        .slice(0, 4);
+
+    if (upcomingTasks.length === 0) {
+
+        deadlineList.innerHTML = `
+            <div class="deadline-empty">
+
+                <i data-lucide="calendar-check"></i>
+
+                <p>No upcoming deadlines.</p>
+
+            </div>
+        `;
+
+        lucide.createIcons();
+
+        return;
+    }
+
+    upcomingTasks.forEach(task => {
+
+        const deadlineItem =
+            document.createElement("div");
+
+        deadlineItem.className = "deadline-item";
+
+        const taskDate =
+            new Date(task.date + "T00:00:00");
+
+        const formattedDate =
+            taskDate.toLocaleDateString("en-US", {
+                weekday: "short",
+                month: "short",
+                day: "numeric"
+            });
+
+        deadlineItem.innerHTML = `
+            <div>
+
+                <h4>${task.title}</h4>
+
+                <span>${formattedDate}</span>
+
+            </div>
+
+            <i data-lucide="calendar-days"></i>
+        `;
+
+        deadlineList.appendChild(deadlineItem);
+
+    });
+
+    lucide.createIcons();
+}
+
 taskList.addEventListener("click", (event) => {
 
     const completeButton = event.target.closest(".complete-task");
@@ -173,6 +265,8 @@ taskList.addEventListener("click", (event) => {
         task.completed = !task.completed;
 
         saveTasks(tasks);
+        updateDashboardStats();
+        renderUpcomingDeadlines();
 
         taskItem.classList.toggle("completed");
         const priority = taskItem.querySelector(".priority");
@@ -208,6 +302,7 @@ taskList.addEventListener("click", (event) => {
 
     saveTasks(tasks);
     updateDashboardStats();
+    renderUpcomingDeadlines();
 
     taskItem.remove();
 
@@ -258,3 +353,4 @@ function renderAllTasks() {
 
 renderAllTasks();
 updateDashboardStats();
+renderUpcomingDeadlines();
