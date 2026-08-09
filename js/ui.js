@@ -32,6 +32,7 @@ taskForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const task = {
+        id: Date.now(),
         title: document.getElementById("task-title").value.trim(),
         subject: document.getElementById("task-subject").value,
         priority: document.getElementById("task-priority").value,
@@ -41,6 +42,10 @@ taskForm.addEventListener("submit", (event) => {
     };
 
     console.log("New Task:", task);
+
+    tasks.push(task);
+
+    saveTasks(tasks);
 
     renderTask(task);
 
@@ -63,15 +68,26 @@ function renderTask(task) {
 
     taskItem.className = "task-item";
 
+    taskItem.dataset.id = task.id;
     taskItem.dataset.priority = task.priority;
+
+    if (task.completed) {
+    taskItem.classList.add("completed");
+    }
 
     taskItem.innerHTML = `
         <div class="task-info">
 
             <h4>${task.title}</h4>
 
-            <span class="priority ${task.priority}">
-                ${task.priority.charAt(0).toUpperCase() + task.priority.slice(1)} Priority
+            <span class="priority ${task.completed ? "completed" : task.priority}">
+                ${
+                    task.completed
+                        ? "Completed"
+                        : task.priority.charAt(0).toUpperCase()
+                            + task.priority.slice(1)
+                            + " Priority"
+                }
             </span>
 
         </div>
@@ -113,9 +129,15 @@ taskList.addEventListener("click", (event) => {
 
     if (completeButton) {
 
-        taskItem.classList.toggle("completed");
+        const taskId = Number(taskItem.dataset.id);
+        const task = tasks.find(task => task.id === taskId);
+        task.completed = !task.completed;
 
+        saveTasks(tasks);
+
+        taskItem.classList.toggle("completed");
         const priority = taskItem.querySelector(".priority");
+
 
         if (taskItem.classList.contains("completed")) {
 
@@ -139,26 +161,59 @@ taskList.addEventListener("click", (event) => {
 
     }
 
-    if (deleteButton) {
+   if (deleteButton) {
 
-        taskItem.remove();
+    const taskId = Number(taskItem.dataset.id);
 
-        if (taskList.children.length === 0) {
+    tasks = tasks.filter(task => task.id !== taskId);
 
-            taskList.innerHTML = `
-                <div class="task-empty">
+    saveTasks(tasks);
 
-                    <i data-lucide="clipboard-list"></i>
+    taskItem.remove();
 
-                    <p>No tasks added yet.</p>
+    if (taskList.children.length === 0) {
 
-                </div>
-            `;
+        taskList.innerHTML = `
+            <div class="task-empty">
 
-            lucide.createIcons();
+                <i data-lucide="clipboard-list"></i>
 
-        }
+                <p>No tasks added yet.</p>
 
+            </div>
+        `;
+
+        lucide.createIcons();
     }
 
+}
+
 });
+
+function renderAllTasks() {
+
+    taskList.innerHTML = "";
+
+    if (tasks.length === 0) {
+
+        taskList.innerHTML = `
+            <div class="task-empty">
+
+                <i data-lucide="clipboard-list"></i>
+
+                <p>No tasks added yet.</p>
+
+            </div>
+        `;
+
+        lucide.createIcons();
+
+        return;
+    }
+
+    tasks.forEach(task => {
+        renderTask(task);
+    });
+}
+
+renderAllTasks();
