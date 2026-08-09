@@ -46,8 +46,11 @@ taskForm.addEventListener("submit", (event) => {
     tasks.push(task);
 
     saveTasks(tasks);
+    updateDashboardStats();
 
     renderTask(task);
+
+    updateDashboardStats();
 
     taskForm.reset();
 
@@ -116,6 +119,42 @@ function renderTask(task) {
     lucide.createIcons();
 }
 
+function updateDashboardStats() {
+
+    const totalTasks = tasks.length;
+
+    const dueToday = tasks.filter(task => {
+        return task.date === new Date().toISOString().split("T")[0]
+            && !task.completed;
+    }).length;
+
+    const completedTasks = tasks.filter(
+        task => task.completed
+    ).length;
+
+    const completedPercentage = totalTasks === 0
+        ? 0
+        : Math.round((completedTasks / totalTasks) * 100);
+
+    const uniqueSubjects = new Set(
+        tasks.map(task => task.subject)
+    );
+
+    const totalSubjects = uniqueSubjects.size;
+
+    document.getElementById("total-tasks").textContent =
+        totalTasks;
+
+    document.getElementById("due-today").textContent =
+        dueToday;
+
+    document.getElementById("completed-percentage").textContent =
+        `${completedPercentage}%`;
+
+    document.getElementById("total-subjects").textContent =
+        totalSubjects;
+}
+
 taskList.addEventListener("click", (event) => {
 
     const completeButton = event.target.closest(".complete-task");
@@ -168,6 +207,7 @@ taskList.addEventListener("click", (event) => {
     tasks = tasks.filter(task => task.id !== taskId);
 
     saveTasks(tasks);
+    updateDashboardStats();
 
     taskItem.remove();
 
@@ -217,3 +257,4 @@ function renderAllTasks() {
 }
 
 renderAllTasks();
+updateDashboardStats();
