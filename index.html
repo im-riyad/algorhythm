@@ -143,9 +143,20 @@
 
                 <section class="dashboard-header">
 
-                    <h2>Welcome back, Riyad 👋</h2>
+                    <div class="dashboard-title">
 
-                    <p>Here's an overview of your academic progress today..</p>
+                        <div>
+                            <h2>Welcome back, Riyad 👋</h2>
+
+                            <p>Plan smarter. Study better. Achieve more.</p>
+                        </div>
+
+                        <button class="add-task-btn" id="add-task-btn">
+                            <i data-lucide="plus"></i>
+                            <span>Add Task</span>
+                        </button>
+
+                    </div>
 
                 </section>
 
@@ -316,6 +327,138 @@
                 </section>
 
             </main>
+
+            <!-- Add Task Modal -->
+
+            <div class="modal-overlay" id="task-modal">
+
+                <div class="task-modal">
+
+                    <div class="modal-header">
+
+                        <div>
+                            <h2>Add New Task</h2>
+                            <p>Create a task and stay on track.</p>
+                        </div>
+
+                        <button class="modal-close" id="modal-close">
+                            <i data-lucide="x"></i>
+                        </button>
+
+                    </div>
+
+                    <form id="task-form">
+
+                        <div class="form-group">
+
+                            <label for="task-title">Task Title</label>
+
+                            <input
+                                type="text"
+                                id="task-title"
+                                placeholder="e.g. Complete database assignment"
+                                required
+                            >
+
+                        </div>
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="task-subject">Subject</label>
+
+                                <select id="task-subject">
+
+                                    <option value="">Select subject</option>
+                                    <option value="Database">Database</option>
+                                    <option value="JavaScript">JavaScript</option>
+                                    <option value="Operating System">Operating System</option>
+                                    <option value="Theory of Computing">Theory of Computing</option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="task-priority">Priority</label>
+
+                                <select id="task-priority">
+
+                                    <option value="low">Low</option>
+                                    <option value="medium" selected>Medium</option>
+                                    <option value="high">High</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="task-date">Due Date</label>
+
+                                <input
+                                    type="date"
+                                    id="task-date"
+                                >
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="task-time">Due Time</label>
+
+                                <input
+                                    type="time"
+                                    id="task-time"
+                                >
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="task-description">Description</label>
+
+                            <textarea
+                                id="task-description"
+                                rows="4"
+                                placeholder="Add some details about this task..."
+                            ></textarea>
+
+                        </div>
+
+                        <div class="modal-actions">
+
+                            <button
+                                type="button"
+                                class="cancel-btn"
+                                id="modal-cancel"
+                            >
+                                Cancel
+                            </button>
+
+                            <button
+                                type="submit"
+                                class="save-task-btn"
+                            >
+                                <i data-lucide="check"></i>
+                                Save Task
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
 
         </div>
 
