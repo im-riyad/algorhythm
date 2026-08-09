@@ -204,3 +204,54 @@
 .task-empty p {
     font-size: 0.9rem;
 }
+
+.task-item.completed h4 {
+    text-decoration: line-through;
+
+    opacity: 0.55;
+}
+
+.task-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+.task-action {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    border: none;
+
+    border-radius: var(--radius-md);
+
+    background: transparent;
+
+    color: var(--text-secondary);
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.task-action svg {
+    width: 18px;
+    height: 18px;
+}
+
+.task-action:hover {
+    background: var(--background);
+
+    color: var(--primary);
+}
+
+.task-action.delete-task:hover {
+    color: #ef4444;
+}
