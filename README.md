@@ -6,7 +6,6 @@ A modern student study planner built with HTML, CSS and JavaScript.
 
 - Task management
 - Subject organization
-- Dark mode
 - Local Storage
 - Responsive design
 
